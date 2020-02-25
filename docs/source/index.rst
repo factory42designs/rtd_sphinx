@@ -10,6 +10,7 @@ Welcome to rtd_sphinx's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   setup sphinx/sphinx
    Create new site/newsite
 
 
