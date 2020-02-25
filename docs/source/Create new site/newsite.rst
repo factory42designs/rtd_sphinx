@@ -92,7 +92,7 @@ Click + to view your Repos
 
 Sync your account if you do not see your Repo
 
-In the root of your repo create a ``travis.yml`` file. This includes the information Travis-ci will use to build your site
+In the root of your repo create a ``.travis.yml`` file. This includes the information Travis-ci will use to build your site
 
 My file looks like this
 ::
@@ -116,12 +116,18 @@ My file looks like this
         on:
         branch:  master
 
-  More info on this can be found here 
-     - https://docs.travis-ci.com/user/deployment/pages/
+More info on this can be found here 
+    - https://docs.travis-ci.com/user/deployment/pages/
 
 
+Last we need to let git know about the changes we made and files and directories we added. 
 
-  in terminal go your docs directory and add your files and commit your initoal Changes
+go to your repos root directory in terminal
+::
 
-  git add --all
-  git commit -a -m 'adding initial changes to repo and trigger first build'
+    $ git add --all
+    $ git commit -a -m 'adding initial changes to repo and trigger first build'
+    $ git push
+
+Once you do your first push, travis-ci will start to build your website with the instructions in the .yml file
+We can see the progress by looking at the repo's dashboard on the travis site and you will be able to trouble shoot errors from the travis console.

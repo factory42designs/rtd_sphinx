@@ -232,38 +232,44 @@ $ cd docs
 <p>Go to <a class="reference external" href="https://www.travis-ci.org">https://www.travis-ci.org</a> and sign in using your GitHub ID</p>
 <p>Click + to view your Repos</p>
 <p>Sync your account if you do not see your Repo</p>
-<p>In the root of your repo create a <code class="docutils literal notranslate"><span class="pre">travis.yml</span></code> file. This includes the information Travis-ci will use to build your site</p>
+<p>In the root of your repo create a <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> file. This includes the information Travis-ci will use to build your site</p>
 <p>My file looks like this</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  language: python
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>language: python
 
-  install:
-  - pip install sphinx sphinx_rtd_theme mock recommonmark
-
-
-  script:
-  - sphinx-build -Wv docs/source docs/build/html
-
-  deploy:
-  # publish docs on push
-  - provider: pages
-      skip_cleanup: true
-      keep-history: false
-      github_token: $GH_TOKEN  #this is the token added to env variables in travis the name is case sensitive
-      local_dir: docs/build/html
-      on:
-      branch:  master
-
-More info on this can be found here
-   - https://docs.travis-ci.com/user/deployment/pages/
+install:
+- pip install sphinx sphinx_rtd_theme mock recommonmark
 
 
+script:
+- sphinx-build -Wv docs/source docs/build/html
 
-in terminal go your docs directory and add your files and commit your initoal Changes
-
-git add --all
-git commit -a -m &#39;adding initial changes to repo and trigger first build&#39;
+deploy:
+# publish docs on push
+- provider: pages
+    skip_cleanup: true
+    keep-history: false
+    github_token: $GH_TOKEN  #this is the token added to env variables in travis the name is case sensitive
+    local_dir: docs/build/html
+    on:
+    branch:  master
 </pre></div>
 </div>
+<dl class="docutils">
+<dt>More info on this can be found here</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://docs.travis-ci.com/user/deployment/pages/">https://docs.travis-ci.com/user/deployment/pages/</a></li>
+</ul>
+</dd>
+</dl>
+<p>Last we need to let git know about the changes we made and files and directories we added.</p>
+<p>go to your repos root directory in terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add --all
+$ git commit -a -m &#39;adding initial changes to repo and trigger first build&#39;
+$ git push
+</pre></div>
+</div>
+<p>Once you do your first push, travis-ci will start to build your website with the instructions in the .yml file
+We can see the progress by looking at the repo’s dashboard on the travis site and you will be able to trouble shoot errors from the travis console.</p>
 </div>
 </div>
 
