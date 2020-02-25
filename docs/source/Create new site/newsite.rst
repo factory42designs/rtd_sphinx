@@ -92,32 +92,29 @@ Click + to view your Repos
 
 Sync your account if you do not see your Repo
 
-In the root of your repo create a travis.yml file
-  This includes the information Travis will use to build your site
+In the root of your repo create a ``travis.yml`` file. This includes the information Travis-ci will use to build your site
 
-  My file looks like this:
-  ------------------------
+My file looks like this
+::
+ 
+    language: python
 
-  language: python
-
-  install:
-  - pip install sphinx sphinx_rtd_theme mock recommonmark
+    install:
+    - pip install sphinx sphinx_rtd_theme mock recommonmark
 
 
-  script:
-  - sphinx-build -Wv docs/source docs/build/html
+    script:
+    - sphinx-build -Wv docs/source docs/build/html
 
-  deploy:
-  # publish docs on push
-  - provider: pages
-    skip_cleanup: true
-    keep-history: false
-    github_token: $GH_TOKEN  #this is the token added to env variables in travis the name is case sensitive
-    local_dir: docs/build/html
-    on:
-      branch:  master
-
-  ----------------------------------------------------------------
+    deploy:
+    # publish docs on push
+    - provider: pages
+        skip_cleanup: true
+        keep-history: false
+        github_token: $GH_TOKEN  #this is the token added to env variables in travis the name is case sensitive
+        local_dir: docs/build/html
+        on:
+        branch:  master
 
   More info on this can be found here 
      - https://docs.travis-ci.com/user/deployment/pages/

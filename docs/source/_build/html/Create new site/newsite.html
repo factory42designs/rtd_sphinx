@@ -34,7 +34,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to rtd_sphinx’s documentation!" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,17 +79,17 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Create a new GitHub Pages site for all your docs with Sphinx</a><ul>
-<li><a class="reference internal" href="#create-github-repo">Create GitHub repo</a></li>
-<li><a class="reference internal" href="#conf-py-changes">Conf.py Changes</a></li>
-<li><a class="reference internal" href="#github-setup">GitHub Setup</a></li>
-<li><a class="reference internal" href="#travis-ci-setup">Travis-CI Setup</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create a new GitHub Pages site for all your docs with Sphinx</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-github-repo">Create GitHub repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conf-py-changes">Conf.py Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#github-setup">GitHub Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#travis-ci-setup">Travis-CI Setup</a></li>
 </ul>
 </li>
 </ul>
-</div>
+
             
           
         </div>
@@ -231,38 +232,38 @@ $ cd docs
 <p>Go to <a class="reference external" href="https://www.travis-ci.org">https://www.travis-ci.org</a> and sign in using your GitHub ID</p>
 <p>Click + to view your Repos</p>
 <p>Sync your account if you do not see your Repo</p>
-<dl class="docutils">
-<dt>In the root of your repo create a travis.yml file</dt>
-<dd><p class="first">This includes the information Travis will use to build your site</p>
-<p>language: python</p>
-<p>install:
-- pip install sphinx sphinx_rtd_theme mock recommonmark</p>
-<p>script:
-- sphinx-build -Wv docs/source docs/build/html</p>
-<p>deploy:
-# publish docs on push
-- provider: pages</p>
-<blockquote>
-<div><p>skip_cleanup: true
-keep-history: false
-github_token: $GH_TOKEN  #this is the token added to env variables in travis the name is case sensitive
-local_dir: docs/build/html
-on:</p>
-<blockquote>
-<div>branch:  master</div></blockquote>
-</div></blockquote>
-<dl class="docutils">
-<dt>More info on this can be found here</dt>
-<dd><ul class="first last simple">
-<li><a class="reference external" href="https://docs.travis-ci.com/user/deployment/pages/">https://docs.travis-ci.com/user/deployment/pages/</a></li>
-</ul>
-</dd>
-</dl>
-<p>in terminal go your docs directory and add your files and commit your initoal Changes</p>
-<p class="last">git add –all
-git commit -a -m ‘adding initial changes to repo and trigger first build’</p>
-</dd>
-</dl>
+<p>In the root of your repo create a <code class="docutils literal notranslate"><span class="pre">travis.yml</span></code> file. This includes the information Travis-ci will use to build your site</p>
+<p>My file looks like this</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  language: python
+
+  install:
+  - pip install sphinx sphinx_rtd_theme mock recommonmark
+
+
+  script:
+  - sphinx-build -Wv docs/source docs/build/html
+
+  deploy:
+  # publish docs on push
+  - provider: pages
+      skip_cleanup: true
+      keep-history: false
+      github_token: $GH_TOKEN  #this is the token added to env variables in travis the name is case sensitive
+      local_dir: docs/build/html
+      on:
+      branch:  master
+
+More info on this can be found here
+   - https://docs.travis-ci.com/user/deployment/pages/
+
+
+
+in terminal go your docs directory and add your files and commit your initoal Changes
+
+git add --all
+git commit -a -m &#39;adding initial changes to repo and trigger first build&#39;
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -271,6 +272,13 @@ git commit -a -m ‘adding initial changes to repo and trigger first build’</p
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to rtd_sphinx’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
