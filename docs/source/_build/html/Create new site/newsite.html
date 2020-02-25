@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Create a new GitHub Pages site for all your docs with Sphinx &mdash; rtd_sphinx  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> rtd_sphinx
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Create a new GitHub Pages site for all your docs with Sphinx</a><ul>
+<li><a class="reference internal" href="#create-github-repo">Create GitHub repo</a></li>
+<li><a class="reference internal" href="#conf-py-changes">Conf.py Changes</a></li>
+<li><a class="reference internal" href="#github-setup">GitHub Setup</a></li>
+<li><a class="reference internal" href="#travis-ci-setup">Travis-CI Setup</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rtd_sphinx</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Create a new GitHub Pages site for all your docs with Sphinx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Create new site/newsite.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="create-a-new-github-pages-site-for-all-your-docs-with-sphinx">
+<h1>Create a new GitHub Pages site for all your docs with Sphinx<a class="headerlink" href="#create-a-new-github-pages-site-for-all-your-docs-with-sphinx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-github-repo">
+<h2>Create GitHub repo<a class="headerlink" href="#create-github-repo" title="Permalink to this headline">¶</a></h2>
+<p>Log in to github create new repo and initiallize with a readme.</p>
+<p>If you haven’t already install Sphinx on the computer you will be working on
+instructions can be found here -  (link to docs)</p>
+<p>Open a terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone &quot;your repo url here&quot;
+$ cd &#39;repo name&#39;
+$ mkdir docs
+$ cd docs
+</pre></div>
+</div>
+<p>Now we will use Sphinx to set the repo up for us:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sphinx_quickstart
+</pre></div>
+</div>
+<p>As we move through the config the main options paid attention to were</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Separate</span> <span class="n">source</span> <span class="ow">and</span> <span class="n">build</span> <span class="n">directories</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="p">[</span><span class="n">n</span><span class="p">]:</span> <span class="n">y</span>
+<span class="o">&gt;</span> <span class="n">githubpages</span><span class="p">:</span> <span class="n">create</span> <span class="o">.</span><span class="n">nojekyll</span> <span class="n">file</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">the</span> <span class="n">document</span> <span class="n">on</span> <span class="n">GitHub</span> <span class="n">pages</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="p">[</span><span class="n">n</span><span class="p">]:</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conf-py-changes">
+<h2>Conf.py Changes<a class="headerlink" href="#conf-py-changes" title="Permalink to this headline">¶</a></h2>
+<p>in conf.py change the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static&#39;</span><span class="p">]</span> <span class="n">to</span> <span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;alabaster&#39;</span> <span class="n">to</span> <span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+</pre></div>
+</div>
+<p>in extensions add</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;sphinx.ext.githubpages&#39;</span><span class="p">,</span>
+<span class="s1">&#39;recommonmark&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>This is also the page you will define HTML theme options on. The ones for this page are;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;canonical_url&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="c1">#&#39;analytics_id&#39;: &#39;UA-XXXXXXX-1&#39;,  #  Provided by Google in your dashboard</span>
+    <span class="s1">&#39;logo_only&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;display_version&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;prev_next_buttons_location&#39;</span><span class="p">:</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;style_external_links&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="c1">#&#39;vcs_pageview_mode&#39;: &#39;&#39;,</span>
+    <span class="s1">&#39;style_nav_header_background&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span>
+    <span class="c1"># Toc options</span>
+    <span class="s1">&#39;collapse_navigation&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;sticky_navigation&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;navigation_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;includehidden&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;titles_only&#39;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="github-setup">
+<h2>GitHub Setup<a class="headerlink" href="#github-setup" title="Permalink to this headline">¶</a></h2>
+<p>Click on profile photo on Github to go to your account. Go to:</p>
+<blockquote>
+<div>&gt; Account Settings -&gt; Developer Settings -&gt; Personal access tokens</div></blockquote>
+<div class="line-block">
+<div class="line">Generate a new token and give it the name <code class="docutils literal notranslate"><span class="pre">GH_TOKEN</span></code> and check Repo to give it full push/pull permission.</div>
+<div class="line"><em>Copy it somewhere safe. You cannot reaccess it</em></div>
+</div>
+<p>Go back to your project repo where your docs are.</p>
+<p>Create a new branch called <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code></p>
+<p>Go to the repo settings and scroll down to GitHub Pages section and select the gh_pages branch as source</p>
+<blockquote>
+<div><ul class="simple">
+<li>This option is only available from repo/project based Github pages. If building a user page it has to be built from Master</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="travis-ci-setup">
+<h2>Travis-CI Setup<a class="headerlink" href="#travis-ci-setup" title="Permalink to this headline">¶</a></h2>
+<p>Go to <a class="reference external" href="https://www.travis-ci.org">https://www.travis-ci.org</a> and sign in using your GitHub ID</p>
+<p>Click + to view your Repos</p>
+<p>Sync your account if you do not see your Repo</p>
+<dl class="docutils">
+<dt>In the root of your repo create a travis.yml file</dt>
+<dd><p class="first">This includes the information Travis will use to build your site</p>
+<p>language: python</p>
+<p>install:
+- pip install sphinx sphinx_rtd_theme mock recommonmark</p>
+<p>script:
+- sphinx-build -Wv docs/source docs/build/html</p>
+<p>deploy:
+# publish docs on push
+- provider: pages</p>
+<blockquote>
+<div><p>skip_cleanup: true
+keep-history: false
+github_token: $GH_TOKEN  #this is the token added to env variables in travis the name is case sensitive
+local_dir: docs/build/html
+on:</p>
+<blockquote>
+<div>branch:  master</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt>More info on this can be found here</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://docs.travis-ci.com/user/deployment/pages/">https://docs.travis-ci.com/user/deployment/pages/</a></li>
+</ul>
+</dd>
+</dl>
+<p>in terminal go your docs directory and add your files and commit your initoal Changes</p>
+<p class="last">git add –all
+git commit -a -m ‘adding initial changes to repo and trigger first build’</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Joe S
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
