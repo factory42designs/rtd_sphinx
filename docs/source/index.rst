@@ -12,7 +12,7 @@ Welcome to rtd_sphinx's documentation!
 
    setup sphinx/sphinx
    Create new site/newsite
-   RST Docs/rst
+   RST Docs/rstinfo
 
 
 
