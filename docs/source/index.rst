@@ -7,12 +7,12 @@ Welcome to rtd_sphinx's documentation!
 ======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 6
    :caption: Contents:
 
    setup sphinx/sphinx
    Create new site/newsite
-   RST Docs/rstinfo
+   rst_docs/rstinfo
 
 
 
